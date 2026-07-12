@@ -5,6 +5,7 @@ import json
 import random 
 import logging 
 from PIL import Image
+from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 API_TOKEN = os.getenv("Telegram_API_token")
 
 logger = telebot.logger
@@ -15,12 +16,63 @@ bot = telebot.TeleBot(API_TOKEN)
 @bot.message_handler(commands=['help', 'start' , 'setname'])
 def send_welcome(message):
     if message.text != "/setname":
-        bot.send_message(message.chat.id , f"Hi {message.chat.first_name} , how can i help you ?")
-        logger.info(f"User {message.chat.first_name} started the bot.") 
+        # bot.send_message(message.chat.id , f"Hi {message.chat.first_name} , how can i help you ?")
+        # logger.info(f"User {message.chat.first_name} started the bot.")  
+        pass 
     else : 
         send_msg = bot.send_message(message.chat.id , "Please send me your name!")
         bot.register_next_step_handler(send_msg,set_name) 
+
+    markup = ReplyKeyboardMarkup(resize_keyboard=True , input_field_placeholder="Choose an option")
+    markup.add(KeyboardButton('خرید اشتراک'))
+# or:
+    markup.add('تعرفه و قیمت' , "اکانت تست")
+    markup.add("اموزش استفاده"  , "پشتیبانی")
+    logger.info(f"user {message.chat.first_name} pushed a button")
+
+# display this markup:
+    bot.send_message(message.chat.id, 'یک گزینه را انتخاب کنید : ', reply_markup=markup)
         
+@bot.message_handler(func= lambda message : message.text == 'تعرفه و قیمت' )
+def price_handler(message) : 
+    bot.send_message(message.chat.id , """ 🚀 لیست قیمت اکانت‌های پرسرعت و پایدار  🚀
+(قابل استفاده روی چندین دستگاه به صورت همزمان 🌟)
+تمامی سرویس ها بدون محدودیت کاربر و زمانی می‌باشند 
+🔹 پکیج پرطرفدار (پیشنهادی)
+• حجم: ۲۰ گیگابایت 
+• 💰 قیمت: ۱۷۰,۰۰۰ تومان
+
+
+🔹 پکیج اقتصادی
+• حجم: ۱۰ گیگابایت |
+• 💰 قیمت: ۹۵,۰۰۰تومان
+
+
+🔹 پکیج کم‌مصرف
+• حجم: ۵ گیگابایت |
+• 💰 قیمت: ۶۰,۰۰۰ تومان
+
+
+🔹 پکیج ویژه (مقرون‌به‌صرفه)
+• حجم: ۳۰ گیگابایت 
+• 💰 قیمت: ۲۴۰,۰۰۰ تومان
+
+
+🔹 پکیج خانوادگی (اشتراکی)
+• حجم: ۵۰ گیگابایت | 
+• 💰 قیمت: ۳۸۰,۰۰۰ تومان
+
+
+🔹 پکیج بیزینس (حجم بالا)
+• حجم: ۱۰۰ گیگابایت | 
+• 💰 قیمت: ۷۰۰,۰۰۰ تومان
+
+
+✅برای دریافت تست رایگان کلمه «تست» رو به پشتیبانی ارسال کنید
+
+پشتیبانی و خرید : @Sup_fastvpn
+
+@fastvpn6 """)
 
 
 def set_name(message):
