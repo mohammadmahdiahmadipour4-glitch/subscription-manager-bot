@@ -2,7 +2,6 @@ import telebot
 import os 
 import random 
 import logging 
-from PIL import Image
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 from telebot.types import InlineKeyboardButton , InlineKeyboardMarkup
 from marzban import create_vpn_user  
