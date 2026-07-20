@@ -93,14 +93,14 @@ def reply_shopping_call(call):
     user_id = call.message.chat.id 
     
     if call.data == "5gig": 
-        reply_text = "شما  بسته 5 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 50 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        reply_text = "شما  بسته 5 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 50 هزار تومان \n شماره کارت :\n 5041 7212 3998 2854 \n احمدی پور"
         markup = InlineKeyboardMarkup()
         btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_5")
         markup.add(btn_confirm) 
         bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup) 
     
     elif call.data == "7gig": 
-        reply_text = "شما  بسته 7 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 63 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        reply_text = "شما  بسته 7 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 63 هزار تومان \n  شماره کارت :\n 5041 7212 3998 285 \n احمدی پور"
         markup = InlineKeyboardMarkup()
         btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_7")
         markup.add(btn_confirm) 
@@ -110,14 +110,14 @@ def reply_shopping_call(call):
 
 
     elif call.data == "10gig": 
-        reply_text = "شما  بسته 10 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 80 هزار تومان \n شماره کارت : 5041721121221111"
+        reply_text = "شما  بسته 10 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 85 هزار تومان \n  شماره کارت :\n 5041 7212 3998 2854 \n احمدی پور"
         markup = InlineKeyboardMarkup()
         btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_10")
         markup.add(btn_confirm) 
         bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup)  
 
     elif call.data == "15gig": 
-        reply_text = "شما  بسته 15 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 120 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        reply_text = "شما  بسته 15 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 120 هزار تومان \n  شماره کارت :\n 5041 7212 3998 2854 \n احمدی پور"
         markup = InlineKeyboardMarkup()
         btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_15")
         markup.add(btn_confirm) 
@@ -125,14 +125,14 @@ def reply_shopping_call(call):
 
 
     elif call.data == "20gig": 
-        reply_text = "شما  بسته 20 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 160 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        reply_text = "شما  بسته 20 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 160 هزار تومان \n شماره کارت :\n 5041 7212 3998 2854 \n احمدی پور"
         markup = InlineKeyboardMarkup()
         btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_20")
         markup.add(btn_confirm) 
         bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup)  
 
     elif call.data == "25gig": 
-        reply_text = "شما  بسته 25 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 200 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        reply_text = "شما  بسته 25 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 200 هزار تومان \n شماره کارت :\n 5041 7212 3998 2854 \n احمدی پور"
         markup = InlineKeyboardMarkup()
         btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_25")
         markup.add(btn_confirm) 
@@ -140,14 +140,14 @@ def reply_shopping_call(call):
 
 
     elif call.data == "30gig": 
-        reply_text = "شما  بسته 30 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 240 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        reply_text = "شما  بسته 30 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 240 هزار تومان \n  شماره کارت :\n 5041 7212 3998 2854 \n احمدی پور"
         markup = InlineKeyboardMarkup()
         btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_30")
         markup.add(btn_confirm) 
         bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup)  
 
     elif call.data == "40gig": 
-        reply_text = "شما  بسته 40 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 320 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        reply_text = "شما  بسته 40 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 320 هزار تومان \n  شماره کارت :\n 5041 7212 3998 2854 \n احمدی پور"
         markup = InlineKeyboardMarkup()
         btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_40")
         markup.add(btn_confirm) 
@@ -156,7 +156,7 @@ def reply_shopping_call(call):
 
 
     elif call.data == "50gig": 
-        reply_text = "شما  بسته 50 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 350 هزار تومان \n شماره کارت : 5041721121221111"
+        reply_text = "شما  بسته 50 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 350 هزار تومان \n  شماره کارت :\n 5041 7212 3998 2854 \n احمدی پور"
         markup = InlineKeyboardMarkup()
         btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_50")
         markup.add(btn_confirm) 
