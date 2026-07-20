@@ -269,6 +269,8 @@ def cancel_test(message):
         "درخواست اکانت تست لغو شد.", 
         reply_markup=ReplyKeyboardRemove() 
     )
+    send_welcome()
+
 
 
 @bot.message_handler(content_types=['contact'])
@@ -290,6 +292,7 @@ def get_contact_and_send_test(message):
         sending_test = f"🎁 اکانت تست شما با حجم ۱۰۰ مگابایت:\n\n{new_test_account}" 
         bot.send_message(message.chat.id, sending_test)
 
+    send_welcome()
 
 
 
