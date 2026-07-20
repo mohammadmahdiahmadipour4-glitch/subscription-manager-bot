@@ -4,7 +4,7 @@ import random
 import logging 
 from PIL import Image
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
-from telebot.types import InlineKeyboardButton , InlineKeyboardMarkup
+from telebot.types import InlineKeyboardButton , InlineKeyboardMarkup , ReplyKeyboardRemove
 from marzban import create_vpn_user  
 import sqlite3
 from datetime import datetime
@@ -75,12 +75,17 @@ def send_welcome(message):
 @bot.message_handler(func= lambda message : message.text in ["تعرفه و قیمت" , "خرید اشتراک" ])
 def price_handler(message):  
     markup = InlineKeyboardMarkup( row_width = 1 ) 
-    btn_5g = InlineKeyboardButton(text="5 gigabyte --------> 65T" , callback_data="5gig")
-    btn_10g = InlineKeyboardButton(text="10 gigabyte --------> 80T", callback_data="10gig")
-    btn_20g = InlineKeyboardButton(text="20 gigabyte --------> 160T" , callback_data="20gig")
-    btn_50g = InlineKeyboardButton(text="50 gigabyte --------> 400T" , callback_data="50gig")
+    btn_5g = InlineKeyboardButton(text="5 گیگابایت              50 هزارتومان" , callback_data="5gig")
+    btn_7g = InlineKeyboardButton(text="7 گیگابایت              63 هزارتومان" , callback_data="7gig")
+    btn_10g = InlineKeyboardButton(text="10 گیگابایت                85 هزار تومان", callback_data="10gig")
+    btn_15g = InlineKeyboardButton(text="15 گیگابایت                120 هزار تومان", callback_data="15gig")
+    btn_20g = InlineKeyboardButton(text="20 گیگابایت                160 هزارتومان" , callback_data="20gig")
+    btn_25g = InlineKeyboardButton(text="25 گیگابایت                200 هزارتومان" , callback_data="25gig")
+    btn_30g = InlineKeyboardButton(text="30 گیگابایت               240 هزارتومان" , callback_data="30gig")
+    btn_40g = InlineKeyboardButton(text="40 گیگابایت               320 هزارتومان" , callback_data="30gig")
+    btn_50g = InlineKeyboardButton(text="50 گیگابایت                350 هزارتومان" , callback_data="50gig")
 
-    markup.add(btn_5g,btn_10g,btn_20g , btn_50g)
+    markup.add(btn_5g , btn_7g,btn_10g , btn_15g,btn_20g , btn_25g , btn_30g  , btn_40g ,  btn_50g)
     bot.send_message(message.chat.id , text = "choose one of our services" , reply_markup=markup)
 
 
@@ -89,11 +94,21 @@ def reply_shopping_call(call):
     user_id = call.message.chat.id 
     
     if call.data == "5gig": 
-        reply_text = "شما  بسته 5 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 65 هزار تومان \n شماره کارت : 5041721121221111"
+        reply_text = "شما  بسته 5 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 50 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
         markup = InlineKeyboardMarkup()
         btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_5")
         markup.add(btn_confirm) 
         bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup) 
+    
+    elif call.data == "7gig": 
+        reply_text = "شما  بسته 7 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 63 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        markup = InlineKeyboardMarkup()
+        btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_7")
+        markup.add(btn_confirm) 
+        bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup)  
+
+
+
 
     elif call.data == "10gig": 
         reply_text = "شما  بسته 10 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 80 هزار تومان \n شماره کارت : 5041721121221111"
@@ -102,12 +117,44 @@ def reply_shopping_call(call):
         markup.add(btn_confirm) 
         bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup)  
 
+    elif call.data == "15gig": 
+        reply_text = "شما  بسته 15 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 120 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        markup = InlineKeyboardMarkup()
+        btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_15")
+        markup.add(btn_confirm) 
+        bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup)  
+
+
     elif call.data == "20gig": 
-        reply_text = "شما  بسته 20 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 160 هزار تومان \n شماره کارت : 5041721121221111"
+        reply_text = "شما  بسته 20 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 160 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
         markup = InlineKeyboardMarkup()
         btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_20")
         markup.add(btn_confirm) 
         bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup)  
+
+    elif call.data == "25gig": 
+        reply_text = "شما  بسته 25 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 200 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        markup = InlineKeyboardMarkup()
+        btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_25")
+        markup.add(btn_confirm) 
+        bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup)  
+
+
+    elif call.data == "30gig": 
+        reply_text = "شما  بسته 30 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 240 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        markup = InlineKeyboardMarkup()
+        btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_30")
+        markup.add(btn_confirm) 
+        bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup)  
+
+    elif call.data == "40gig": 
+        reply_text = "شما  بسته 40 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 320 هزار تومان \n شماره کارت : 5041 7212 3998 2854 \n احمدی پور"
+        markup = InlineKeyboardMarkup()
+        btn_confirm = InlineKeyboardButton(text= "تایید واریز" , callback_data="confirmed_40")
+        markup.add(btn_confirm) 
+        bot.edit_message_text(chat_id=call.message.chat.id  , message_id=call.message.message_id , text=reply_text , reply_markup=markup)  
+
+
 
     elif call.data == "50gig": 
         reply_text = "شما  بسته 50 گیگابایت بدون محدودیت زمان و کاربر را انتخاب کردید \n لطفا بعد از واریز خرید را تایید کنید \n مبلغ : 350 هزار تومان \n شماره کارت : 5041721121221111"
@@ -119,13 +166,13 @@ def reply_shopping_call(call):
     elif call.data.startswith("confirmed_"):
         data_limit = call.data.split("_")[1] 
         
-        # پیام قبلی را پاک می‌کنیم
+        
         bot.delete_message(chat_id=call.message.chat.id, message_id=call.message.message_id) 
         
-        # از کاربر می‌خواهیم عکس رسید را بفرستد
+        
         msg = bot.send_message(call.message.chat.id, "📸 لطفاً عکس رسید واریز خود را ارسال کنید:")
         
-        # ربات را منتظر می‌گذاریم تا پیام بعدی کاربر (که باید عکس باشد) را بگیرد و به تابع جدید بفرستد
+        
         bot.register_next_step_handler(msg, process_receipt_photo, data_limit)
 
 
@@ -138,10 +185,10 @@ def reply_shopping_call(call):
         extracted_username = username_match.group(1).strip() if username_match else "نامشخص"
 
         marzban_result = create_vpn_user(username=customer_id , data_limit_gb=data_limit) 
-        success_text = f"خرید شما تایید شد \n لینک ساب شما :\n{marzban_result}" 
+        success_text = f"خرید شما تایید شد \n لینک ساب شما :\n{marzban_result} \n  ✅برای دریافت بهترین سرعت و کیفیت از برنامه کارینگ استفاده گنید" 
         bot.send_message(chat_id=customer_id , text=success_text) 
         
-        # 🔴 ویرایش کپشن عکس و حذف دکمه‌ها
+
         new_caption = call.message.caption + "\n\n✅ وضعیت: تایید شد و لینک ارسال گردید."
         bot.edit_message_caption(chat_id=call.message.chat.id, message_id=call.message.message_id, caption=new_caption, reply_markup=None)
         logger.info(f"Premium account created SUCCESSFULLY | UserID: {customer_id} | Plan: {data_limit}GB")
@@ -151,26 +198,26 @@ def reply_shopping_call(call):
         customer_id = call.data.split("_")[1]
         data_limit = call.data.split("_")[2]
         logger.error(f"Premium account creation FAILED | UserID: {customer_id} | Reason: admin deniyed ! ")
-        # 🔴 کلمه text به caption تغییر کرد
+       
         username_match = re.search(r"آیدی تلگرام:\s*(.+)", call.message.caption)
         extracted_username = username_match.group(1).strip() if username_match else "نامشخص"
 
         bot.send_message(customer_id , text="خرید شما لغو شد !  ")
         
-        # 🔴 ویرایش کپشن عکس و حذف دکمه‌ها
+
         new_caption = call.message.caption + "\n\n❌ وضعیت: درخواست توسط ادمین رد شد."
         bot.edit_message_caption(chat_id=call.message.chat.id, message_id=call.message.message_id, caption=new_caption, reply_markup=None)
         
         save_order_to_db(customer_id, extracted_username, f"{data_limit} گیگ", "رد شده")
 
 def process_receipt_photo(message, data_limit):
-    # بررسی می‌کنیم که کاربر حتماً عکس فرستاده باشد، نه متن
+   
     if not message.photo:
         msg = bot.send_message(message.chat.id, "❌ لطفاً فقط عکس رسید را ارسال کنید. دوباره تلاش کنید:")
         bot.register_next_step_handler(msg, process_receipt_photo, data_limit)
         return
 
-    # استخراج باکیفیت‌ترین سایزِ عکسی که کاربر فرستاده
+    
     photo_id = message.photo[-1].file_id
     
     user_id = message.chat.id
@@ -178,49 +225,71 @@ def process_receipt_photo(message, data_limit):
     username = message.from_user.username 
     username_text = f"@{username}" if username else "ندارد"
     
-    # این متن حالا تبدیل می‌شود به کپشنِ زیرِ عکس
+    
     admin_caption = f"🛒 یک درخواست خرید جدید!\n\n" \
                     f"👤 نام مشتری: {first_name}\n" \
                     f"🌐 آیدی تلگرام: {username_text}\n" \
                     f"🔢 آیدی سیستمی: {user_id}\n" \
                     f"📦 حجم درخواستی: {data_limit} گیگ"
     
-    # ساخت دکمه‌های تایید و رد برای ادمین
+    
     markup = InlineKeyboardMarkup(row_width=1)
     btn_confirm_supp = InlineKeyboardButton(text="YES", callback_data=f"YES_{user_id}_{data_limit}") 
     btn_denided_supp = InlineKeyboardButton(text="NO", callback_data=f"NO_{user_id}_{data_limit}") 
     markup.add(btn_confirm_supp, btn_denided_supp) 
     
-    # 🔴 ارسال عکس + کپشن + دکمه‌ها برای پشتیبانی
+
     bot.send_photo(chat_id=suppoert_id, photo=photo_id, caption=admin_caption, reply_markup=markup)
 
-    # پیام اطمینان‌بخش به مشتری
-    bot.send_message(message.chat.id, "✅ رسید شما دریافت شد و برای ادمین ارسال گردید. لطفاً منتظر تایید باشید.")
+
+    bot.send_message(message.chat.id, "✅ رسید شما دریافت شد. لطفاً منتظر تایید باشید.")
+
+
 
 
 @bot.message_handler(func=lambda message: message.text == "اکانت تست")
-def test_account(message):
-    user_id = message.chat.id 
-    test_user = str(user_id) + "test"
-    logger.info(f"Test account requested | UserID: {user_id}")
-    # پیام انتظار برای کاربر
-    bot.send_message(chat_id=message.chat.id, text="⏳ چند لحظه صبر کنید...")
+def ask_for_phone(message):
+    markup = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+    btn_phone = KeyboardButton(text="📲 تایید و ارسال شماره", request_contact=True)
+    btn_cancel = KeyboardButton(text="❌ انصراف")
+    markup.add(btn_phone, btn_cancel)
     
-    # ساخت اکانت (حالا 0.1 به درستی کار می‌کند)
-    new_test_account = create_vpn_user(username=test_user, data_limit_gb=1)
+    text = """⚠️ **توجه:**
+برای جلوگیری از سوءاستفاده و دریافت مکرر اکانت تست، نیاز به تایید شماره موبایل شما داریم.
+
+لطفاً برای دریافت اکانت تست، روی دکمه «تایید و ارسال شماره» در پایین صفحه کلیک کنید."""
     
-    # بررسی اینکه آیا اروری (مثل تکراری بودن) رخ داده یا لینک با موفقیت ساخته شده
+    bot.send_message(message.chat.id, text, reply_markup=markup, parse_mode="Markdown")
+
+
+@bot.message_handler(func=lambda message: message.text == "❌ انصراف")
+def cancel_test(message):
+    
+    bot.send_message(
+        message.chat.id, 
+        "درخواست اکانت تست لغو شد.", 
+        reply_markup=ReplyKeyboardRemove() 
+    )
+
+
+@bot.message_handler(content_types=['contact'])
+def get_contact_and_send_test(message):
+    user_id = message.chat.id
+    phone = message.contact.phone_number
+    
+    
+    bot.send_message(
+        message.chat.id, 
+        f"✅ شماره {phone} با موفقیت تایید شد.\n⏳ در حال ساخت اکانت تست...", 
+        reply_markup=ReplyKeyboardRemove()
+    )
+    test_user = f"{user_id}test" 
+    new_test_account = create_vpn_user(username=test_user, data_limit_gb=0.1)    
     if "❌" in new_test_account:
-        logger.error(f"Test account creation FAILED | UserID: {user_id} | Reason: {new_test_account}")
-        bot.send_message(chat_id=message.chat.id, text=new_test_account)
+        bot.send_message(message.chat.id, new_test_account)
     else:
-        logger.info(f"Test account created SUCCESSFULLY | UserID: {user_id}")
         sending_test = f"🎁 اکانت تست شما با حجم ۱۰۰ مگابایت:\n\n{new_test_account}" 
-        bot.send_message(chat_id=message.chat.id, text=sending_test)
-
-
-
-
+        bot.send_message(message.chat.id, sending_test)
 
 
 

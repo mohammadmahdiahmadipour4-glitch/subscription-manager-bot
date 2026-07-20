@@ -5,10 +5,10 @@ MARZBAN_URL = "https://vip.chapar.us"
 ADMIN_USER = "Mhmmdahp"
 ADMIN_PASS = "Mohammad.5831@ahp"
 
-# ۱. تابع برای گرفتن توکن ورود
+
 def get_token():
     data = {"username": ADMIN_USER, "password": ADMIN_PASS}
-    # مرزبان برای لاگین دیتا رو به صورت فرم می‌گیره (نه جیسون)
+    
     response = requests.post(f"{MARZBAN_URL}/api/admin/token", data=data)
     
     if response.status_code == 200:
@@ -16,11 +16,10 @@ def get_token():
     else:
         return None
 
-# ۲. تابع برای ساخت کاربر جدید
 def create_vpn_user(username, data_limit_gb):
     token = get_token()
     if not token:
-        return "❌ خطا در لاگین به مرزبان"
+        return "❌LOGIN FALILED ! \n   CALL SUPPORT : @Sup_fastvpn  "
 
     headers = {
         "Authorization": f"Bearer {token}",
