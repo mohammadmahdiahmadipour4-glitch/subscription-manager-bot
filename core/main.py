@@ -85,7 +85,7 @@ def price_handler(message):
     btn_50g = InlineKeyboardButton(text="50 گیگابایت                350 هزارتومان" , callback_data="50gig")
 
     markup.add(btn_5g , btn_7g,btn_10g , btn_15g,btn_20g , btn_25g , btn_30g  , btn_40g ,  btn_50g)
-    bot.send_message(message.chat.id , text = "choose one of our services" , reply_markup=markup)
+    bot.send_message(message.chat.id , text ="یکی از سرویس های زیر رو انتخاب کنید !" , reply_markup=markup)
 
 
 @bot.callback_query_handler(func=lambda call : True)
