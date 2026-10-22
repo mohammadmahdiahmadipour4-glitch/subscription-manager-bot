@@ -1,9 +1,9 @@
 import requests
-
+import os 
 # اطلاعات سرور مرزبان شما
-MARZBAN_URL = "https://vip.chapar.us"
-ADMIN_USER = "Mhmmdahp"
-ADMIN_PASS = "Mohammad.5831@ahp"
+MARZBAN_URL = os.getenv("MARZBAN_URL")
+ADMIN_USER = os.getenv("ADMIN_USER")
+ADMIN_PASS = os.getenv("ADMIN_PASS")
 
 
 def get_token():
